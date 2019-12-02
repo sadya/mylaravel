@@ -1,0 +1,13 @@
+{
+    "name": "Nofitication",
+    "alias": "nofitication",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Nofitication\\Providers\\NofiticationServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
