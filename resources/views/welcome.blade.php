@@ -80,8 +80,8 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="title m-b-md countEvent">
+                    0
                 </div>
 
                 <div class="links">
@@ -96,5 +96,21 @@
                 </div>
             </div>
         </div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//js.pusher.com/3.1/pusher.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+          var pusher = new Pusher('75fae4c7024048013625', {
+            encrypted: true
+          });
+          var channel = pusher.subscribe('mylaravel');
+          channel.bind('App\\Events\\StatusLiked', function(data) {
+            countEvent = $('.countEvent');
+            countEvent.text(parseInt(countEvent.text())+1);
+          });
+        </script>
+
     </body>
 </html>

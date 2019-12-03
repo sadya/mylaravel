@@ -14,5 +14,4 @@
 Route::prefix('nofitication')->group(function() {
     Route::get('/sendSms', 'NofiticationController@sendSms');
     Route::get('/sendMail', 'NofiticationController@sendMail');
-    Route::get('/call', 'NofiticationController@call');
 });

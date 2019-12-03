@@ -33,7 +33,4 @@ class NofiticationController extends Controller
     });
   }
 
-  public function call() {
-  }
-
 }
