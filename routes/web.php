@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/action', 'Controller@action')->name('action');
+
 Route::get('/test', function () {
     event(new App\Events\StatusLiked('Someone'));
     return "Event has been sent!";

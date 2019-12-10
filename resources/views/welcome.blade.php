@@ -61,6 +61,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .active {
+              border-bottom: 1px solid #636b6f;
+            }
         </style>
     </head>
     <body>
@@ -85,14 +89,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a class="like" action="like" href="javascript:void(0)">Like</a>
+                    <a class="dislike" action="dislike" href="javascript:void(0)">Dislike</a>
                 </div>
             </div>
         </div>
@@ -110,6 +108,26 @@
             countEvent = $('.countEvent');
             countEvent.text(parseInt(countEvent.text())+1);
           });
+
+          action()
+          $('.like, .dislike').click(function () {
+              $('.like, .dislike').removeClass('active');
+              action($(this).attr('action'))
+          })
+
+          function action(action) {
+            $.ajax({
+              headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+              },
+              type:'POST',
+              url:'{{route('action')}}',
+              data:{action:action},
+              success:function(data) {
+                $('.'+data).addClass('active');
+              }
+            });
+          }
         </script>
 
     </body>
